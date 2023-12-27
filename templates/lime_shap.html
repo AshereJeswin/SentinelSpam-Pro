@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LIME and SHAP Explanations</title>
+    <style>
+        body {
+           font-family: Arial, Helvetica, sans-serif;
+           background: linear-gradient(180deg, #021e29, #113447, #021e29);
+           text-align: center;
+           color: #fff;
+       }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>LIME and SHAP Explanations</h1>
+
+    <h2>LIME Explanations</h2>
+    <div class="explanation">
+        <img src="{{ url_for('static', filename=lime_plot1) }}" alt="LIME Plot 1" width="600" height="400">
+    </div>
+    <div class="explanation">
+        <img src="{{ url_for('static', filename=lime_plot2) }}" alt="LIME Plot 2" width="600" height="400">
+    </div>
+
+    <h2>SHAP Explanation</h2>
+    <div class="explanation">
+        <img src="{{ url_for('static', filename=shap_plot) }}" alt="SHAP Plot" width="600" height="400">
+    </div>
+
+    <div class="buttons">
+        <a href="/visualizations">View visualizations</a>
+        <a href="/lime_shap">View LIME and SHAP Explanations</a>
+        <a href="/bow">View Bag of Words (BoW)</a>
+        <a href="/tfidf">View TF-IDF</a>
+    </div>
+</body>
+</html>

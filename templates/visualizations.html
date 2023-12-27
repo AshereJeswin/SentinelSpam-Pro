@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(180deg, #021e29, #113447, #021e29);
+            text-align: center;
+            color: #fff;
+        }
+        .container {
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Visualizations</h1>
+
+        <!-- Spam Word Cloud -->
+        <div class="visualization">
+            <h2>Spam Word Cloud</h2>
+            <img src="{{ url_for('static', filename='spam_wordcloud.png') }}" alt="Spam Word Cloud">
+        </div>
+
+        <!-- Ham Word Cloud -->
+        <div class="visualization">
+            <h2>Ham Word Cloud</h2>
+            <img src="{{ url_for('static', filename='ham_wordcloud.png') }}" alt="Ham Word Cloud">
+        </div>
+
+        <!-- Pie Chart -->
+        <div class="visualization">
+            <h2>Pie Chart</h2>
+            <img src="{{ url_for('static', filename='pie_chart.png') }}" alt="Pie Chart">
+        </div>
+
+        <!-- Accuracy Bar Chart -->
+        <div class="visualization">
+            <h2>Accuracy Bar Chart</h2>
+            <img src="{{ url_for('static', filename='accuracy_bar_chart.png') }}" alt="Accuracy Bar Chart">
+        </div>
+
+        <!-- Confusion Matrix -->
+        <div class="visualization">
+            <h2>Confusion Matrix</h2>
+            <img src="{{ url_for('static', filename='confusion_matrix.png') }}" alt="Confusion Matrix">
+        </div>
+        
+        <!-- Top Words in Ham and Spam Messages -->
+        <div class="visualization">
+            <h2>Top Words in Ham and Spam Messages</h2>
+            <div class="visualization-item">
+                <h3>Top Words in Ham Messages</h3>
+                <img src="{{ url_for('static', filename='top_words_ham.png') }}" alt="Top Words in Ham Messages">
+            </div>
+            <div class="visualization-item">
+                <h3>Top Words in Spam Messages</h3>
+                <img src="{{ url_for('static', filename='top_words_spam.png') }}" alt="Top Words in Spam Messages">
+            </div>
+        </div>
+
+        <!-- Message Length Distribution -->
+        <div class="visualization">
+            <h2>Message Length Distribution</h2>
+            <img src="{{ url_for('static', filename='message_length_distribution.png') }}" alt="Message Length Distribution">
+        </div>
+
+        <!-- Top Bigrams in Ham and Spam Messages -->
+        <div class="visualization">
+            <h2>Top Bigrams in Ham and Spam Messages</h2>
+            <div class="visualization-item">
+                <h3>Top Bigrams in Ham Messages</h3>
+                <img src="{{ url_for('static', filename='ham_bigrams.png') }}" alt="Top Bigrams in Ham Messages">
+            </div>
+            <div class="visualization-item">
+                <h3>Top Bigrams in Spam Messages</h3>
+                <img src="{{ url_for('static', filename='spam_bigrams.png') }}" alt="Top Bigrams in Spam Messages">
+            </div>
+        </div>
+        <!-- Scatter Plots -->
+        <div class="visualization">
+            <h2>Scatter Plots</h2>
+            <div class="visualization-item">
+                <h3>Message Length vs. Word Count</h3>
+                <img src="{{ url_for('static', filename='scatter_plot.png') }}" alt="Scatter Plot">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

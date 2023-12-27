@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Messages</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #021e29, #113447, #021e29);
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+        .main-content {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .header {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #07D7E8;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin: 10px 0;
+            color: #07D7E8;
+            text-align: left; /* Align text to the left */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <h1 class="header">Spam Messages</h1>
+            <ul>
+                {% for message in spam_messages %}
+                    <li>. {{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

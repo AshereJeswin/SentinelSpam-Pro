@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam/Ham Classification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #021e29, #113447, #021e29);
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+        .dashboard {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+            max-width: 200px; /* Adjust the width as needed */
+            margin: 0 20px 0 0;
+            padding: 20px;
+        }
+        .dashboard-buttons a {
+            display: block;
+            margin: 10px 0;
+            background: #056ab0;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+        .dashboard-buttons a:hover {
+            background: #07D7E8;
+            transform: scale(1.05);
+        }
+        .main-content {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .header {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #07D7E8;
+        }
+        .members {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .members ul {
+            list-style: none; 
+            padding: 0;
+        }
+        .members li {
+            margin: 10px 0;
+            color: #07D7E8;
+        }
+        .input-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #07D7E8;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            box-sizing: border-box;
+        }
+        button {
+            background: #056ab0; 
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+        button:hover {
+            background: #07D7E8;
+            transform: scale(1.05);
+        }
+        .result-text {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #07D7E8;
+        }
+        .classification {
+            color: #07D7E8;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard">
+            <div class="dashboard-buttons">
+                <a href="/visualizations" style="font-size: 1.2em;">View Visualizations</a>
+                <a href="/lime_shap">View LIME and SHAP Explanations</a>
+                <a href="/bow" style="font-size: 0.8em;">View Bag of Words (BoW)</a>
+                <a href="/tfidf">View TF-IDF</a>
+                <a href="/spam_messages" style="font-size: 0.8em;">View Spam Messages</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <h1 class="header">SpamSlayer Pro</h1>
+            <div class="members">
+                <p>Members:</p>
+                <ul>
+                    <li>Ashere Jeswin (21pd02)</li>
+                    <li>Vamsi Krishna . U (21pd38)</li>
+                </ul>
+            </div>
+            
+            <form method="POST" action="/classify" class="input-form">
+                <label for="text_input">Enter Text:</label>
+                <input type="text" name="text_input" class="form-control" id="text_input" placeholder="Enter text to classify">
+                <button type="submit" class="btn btn-primary">Classify</button>
+            </form>
+            
+            {% if results %}
+            <div class="result">
+                <h2 class="result-text">Classification Results:</h2>
+                <ul>
+                    {% for model, result_accuracy in results.items() %}
+                        <li class="classification">
+                            <strong>{{ model }}:</strong> {{ result_accuracy['result'] }}
+                            (Accuracy: {{ result_accuracy['accuracy'] | round(2) }})
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <!-- New container for displaying ham messages -->
+            <div class="ham-messages">
+                <h2 class="result-text">Ham Messages:</h2>
+                <ul>
+                    {% for index, row in data[data['label'] == 0].iterrows() %}
+                        <li class="classification">
+                            {{ row['message'] }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
