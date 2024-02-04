@@ -99,7 +99,7 @@ for model_name, model in models.items():
 import pickle
 
 # Saving models in pickle files
-c_drive_directory = 'C:/Users/Vamsi Krishna/Downloads/'
+c_drive_directory = 'C:/Users/Ashere Jeswin/Downloads/'
 
 models = {
     'KNN': KNeighborsClassifier(n_neighbors=100),
